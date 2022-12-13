@@ -15,11 +15,18 @@ function runGame(){
 function draw() {
     background(51);
     if (gameRunning){
+        //Player racket
         fill(200, 200, 200)
-        rect(200, 200, 50, 50)
+        rect(mouseX, canvasHeight - 30 , 50, 25)
+
+        //computer racket
+        fill(100, 100, 100)
+        rect(mouseX, 5, 50, 25)
+
+
     } else {
         fill(100, 100, 100)
-        rect(200, 200, 50, 50)
+        circle(canvasWidth / 2, canvasHeight / 2, 50)
     }
 
 }

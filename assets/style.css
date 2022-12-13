@@ -1,0 +1,9 @@
+#game-container {
+    width: 400px;
+    background-color: blue;
+    margin: auto;
+}
+
+canvas {
+    display: block;
+  }

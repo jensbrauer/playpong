@@ -19,6 +19,10 @@ let ballPositionX = canvasWidth / 2
 let ballGoingRight = true 
 let ballPositionXDirection = 0.5
 
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+  }
+
 function draw() {
     background(51);
     if (gameRunning){
@@ -36,28 +40,27 @@ function draw() {
 
 
         if (ballGoingDown) {
-            ballPositionY = ballPositionY + 2
+            ballPositionY = ballPositionY + 8
         } else {
-            ballPositionY = ballPositionY - 2
+            ballPositionY = ballPositionY - 8
         }
 
         if (ballPositionY >= canvasHeight - 55){
             ballGoingDown = false
         } else if (ballPositionY <= 55 ){
             ballGoingDown = true
+            ballPositionXDirection = getRndInteger(-5, 5)
         }
         
-        if (ballPositionX >= canvasWidth - 25) {
-            ballGoingRight = false
-        } else if (ballPositionX <= 25 ) {
-            ballGoingRight = true
+        if (ballPositionX >= canvasWidth - 25 && ballPositionXDirection > 0) {
+            ballPositionXDirection = ballPositionXDirection * -1
+        } else if (ballPositionX <= 25 && ballPositionXDirection < 0 ) {
+            ballPositionXDirection = ballPositionXDirection * -1
         }
 
-        if (ballGoingRight) {
-            ballPositionX = ballPositionX + ballPositionXDirection
-        } else {
-            ballPositionX = ballPositionX - ballPositionXDirection
-        }
+        ballPositionX = ballPositionX + ballPositionXDirection
+        
+        
     } else {
         fill(100, 100, 100)
         circle(canvasWidth / 2, canvasHeight / 2, 50)

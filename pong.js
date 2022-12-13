@@ -15,6 +15,10 @@ function runGame(){
 let ballPositionY = 55
 let ballGoingDown = true
 
+let ballPositionX = canvasWidth / 2
+let ballGoingRight = true 
+let ballPositionXDirection = 0.5
+
 function draw() {
     background(51);
     if (gameRunning){
@@ -24,11 +28,11 @@ function draw() {
 
         //computer racket
         fill(100, 100, 100)
-        rect(mouseX, 5, 50, 25)
+        rect(ballPositionX - 25, 5, 50, 25)
 
         //ball
         fill(100, 100, 100)
-        circle(mouseX, ballPositionY, 50, 25)
+        circle(ballPositionX, ballPositionY, 50, 25)
 
 
         if (ballGoingDown) {
@@ -43,6 +47,17 @@ function draw() {
             ballGoingDown = true
         }
         
+        if (ballPositionX >= canvasWidth - 25) {
+            ballGoingRight = false
+        } else if (ballPositionX <= 25 ) {
+            ballGoingRight = true
+        }
+
+        if (ballGoingRight) {
+            ballPositionX = ballPositionX + ballPositionXDirection
+        } else {
+            ballPositionX = ballPositionX - ballPositionXDirection
+        }
     } else {
         fill(100, 100, 100)
         circle(canvasWidth / 2, canvasHeight / 2, 50)

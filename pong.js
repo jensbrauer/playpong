@@ -47,7 +47,8 @@ function draw() {
 
         if (ballPositionY >= canvasHeight - 58 && ballPositionY <= canvasHeight - 50){
             if (ballPositionX >= mouseX - 25 && ballPositionX <= mouseX + 25) {
-                ballGoingDown = false}
+                ballGoingDown = false
+            }
         } else if (ballPositionY <= 55 ){
             ballGoingDown = true
             ballPositionXDirection = getRndInteger(-5, 5)
@@ -58,13 +59,17 @@ function draw() {
         } else if (ballPositionX <= 25 && ballPositionXDirection < 0 ) {
             ballPositionXDirection = ballPositionXDirection * -1
         }
-
+        if (ballPositionY >= canvasHeight){
+            gameRunning = false
+        }
         ballPositionX = ballPositionX + ballPositionXDirection
         
         
     } else {
         fill(100, 100, 100)
         circle(canvasWidth / 2, canvasHeight / 2, 50)
+        ballPositionX = canvasWidth / 2
+        ballPositionY = 55
     }
 
 }

@@ -28,7 +28,7 @@ function draw() {
     if (gameRunning){
         //Player racket
         fill(200, 200, 200)
-        rect(mouseX, canvasHeight - 30 , 50, 25)
+        rect(mouseX - 25, canvasHeight - 30 , 50, 25)
 
         //computer racket
         fill(100, 100, 100)
@@ -40,13 +40,14 @@ function draw() {
 
 
         if (ballGoingDown) {
-            ballPositionY = ballPositionY + 8
+            ballPositionY = ballPositionY + 6
         } else {
-            ballPositionY = ballPositionY - 8
+            ballPositionY = ballPositionY - 6
         }
 
-        if (ballPositionY >= canvasHeight - 55){
-            ballGoingDown = false
+        if (ballPositionY >= canvasHeight - 58 && ballPositionY <= canvasHeight - 50){
+            if (ballPositionX >= mouseX - 25 && ballPositionX <= mouseX + 25) {
+                ballGoingDown = false}
         } else if (ballPositionY <= 55 ){
             ballGoingDown = true
             ballPositionXDirection = getRndInteger(-5, 5)
